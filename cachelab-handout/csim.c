@@ -1,4 +1,4 @@
-#include "cachelab.c"
+#include "cachelab.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
@@ -122,9 +122,9 @@ void cacheSimulator()
             }
             if (operation == 'M')
             {
+                hits++;
                 if (verbose)
                     printf(" hit");
-                hits++;
             }
             printf("\n");
         }
@@ -155,7 +155,7 @@ int cacheChange(unsigned long addr)
                 return 0;
             }
             usingcache[i].lru++;
-            if (usingcache[evict].lru < usingcache[i].lru)
+            if (usingcache[evict].lru <= usingcache[i].lru)
                 evict = i;
         }
         else
@@ -171,7 +171,6 @@ int cacheChange(unsigned long addr)
     }
     else
     {
-        usingcache[evict].valid = 1;
         usingcache[evict].tag = tag;
         usingcache[evict].lru = 1;
         evictions++;
