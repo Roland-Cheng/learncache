@@ -57,6 +57,13 @@ void handleArgv(int argc, char *argv[])
         {
         case 'h':
             fprintf(stdout, usage, argv[0]);
+            printf("Options:\n");
+            printf("  -h         Print this help message.\n");
+            printf("  -v         Optional verbose flag.\n");
+            printf("  -s <num>   Number of set index bits.\n");
+            printf("  -E <num>   Number of lines per set.\n");
+            printf("  -b <num>   Number of block offset bits.\n");
+            printf("  -t <file>  Trace file.\n\n");
             exit(1);
         case 'v':
             verbose = 1;

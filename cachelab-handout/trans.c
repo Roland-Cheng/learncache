@@ -56,25 +56,6 @@ void transpose_submit(int M, int N, int A[N][M], int B[M][N])
 
     if (M == 64 && N == 64)
     {
-        // int v0, v1, v2, v3;
-        // int i, j, k;
-        // for (i = 0; i < N; i += 8)
-        // {
-        //     for (j = 0; j < M; j += 4)
-        //     {
-        //         for (k = i; k < i + 8; k++)
-        //         {
-        //             v0 = A[k][j];
-        //             v1 = A[k][j + 1];
-        //             v2 = A[k][j + 2];
-        //             v3 = A[k][j + 3];
-        //             B[j][k] = v0;
-        //             B[j + 1][k] = v1;
-        //             B[j + 2][k] = v2;
-        //             B[j + 3][k] = v3;
-        //         }
-        //     }
-        // }
         int t0, t1, t2, t3, t4, t5, t6, t7;
         for (int i = 0; i < N; i += 8)
         {
